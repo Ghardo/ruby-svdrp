@@ -2,13 +2,31 @@
 class SVDRP::Command::LSTE < SVDRP::BaseCommand
   require "time"
 
-  def now(channel)
-    result = self.send "LSTE #{channel} now"
+  def initialize(channel = '')
+    @channel = channel
+  end
+
+  def setChannel(channel)
+    @channel = channel
+  end
+
+  def get()
+    result = self.send "LSTE"
     return self.parse(result)
   end
 
-  def next(channel)
-    result = self.send "LSTE #{channel} next"
+  def now()
+    result = self.send "LSTE #{@channel} now"
+    return self.parse(result)
+  end
+
+  def next()
+    result = self.send "LSTE #{@channel} next"
+    return self.parse(result)
+  end
+
+  def at(time)
+    result = self.send "LSTE #{@channel} at #{time}"
     return self.parse(result)
   end
 
