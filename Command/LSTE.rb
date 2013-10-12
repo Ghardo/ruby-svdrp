@@ -2,7 +2,8 @@
 class SVDRP::Command::LSTE < SVDRP::BaseCommand
   require "time"
 
-  def initialize(channel = '')
+  def initialize(connection, channel = '')
+    super connection
     @channel = channel
   end
 
