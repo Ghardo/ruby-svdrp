@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 class SVDRP::Connection
 	require 'socket'
+	require 'timeout'
 
 	def initialize( hostname = '127.0.0.1', port = 2001, timeout = 10 )
 		@hostname = hostname
