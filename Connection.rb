@@ -6,10 +6,11 @@ class SVDRP::Connection
 	def initialize( hostname = '127.0.0.1', port = 2001, timeout = 10 )
 		@hostname = hostname
 		@port = port
+		@timeout = timeout
 	end
 
 	def connect()
-    timeout(10) do
+    timeout(@timeout) do
       @socket = TCPSocket::new @hostname, @port
     end
 
